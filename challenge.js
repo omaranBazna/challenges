@@ -36,6 +36,8 @@ function fun(num, mat) {
   }
 
   //call fill function
+  fillFun(mat);
+
   //call empty function
 
   num--;
