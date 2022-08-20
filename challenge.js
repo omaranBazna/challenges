@@ -20,6 +20,11 @@ function fun(num, mat) {
   ///create function to search for a hedge cell that is surrounded from all direction and replace it with '0'  call it [emptyFun]
   ///num--;
   ///call the function
+  ///[fillFun]
+  ///create an empty Set
+  ///scan the matrix
+  ///when hitting '1' look in eight directions and store the coordinates of any '0' cell and add it to the set
+  ///when finish scanning fill all the cells stored in the Set with '1'
 }
 
 test1Mat1 = [
