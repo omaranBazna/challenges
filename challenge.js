@@ -1,0 +1,7 @@
+
+
+const fun(num,mat){
+
+
+    
+}
