@@ -15,85 +15,75 @@ function fun(num, mat) {
   ///we can implement it using recursive approach
   //if num==0 return the mat  [base case]
   ///else
-  /// apply the rules
-  ///create function to search for empty cells which is adjacent to a hedge and replace it with '1' call it [fillFun] function
-  ///create function to search for a hedge cell that is surrounded from all direction and replace it with '0'  call it [emptyFun]
+  /// apply the rules [applyRule] function
+  ///create function to search for empty cells which is adjacent to a hedge and replace it with '1'
+  ///create function to search for a hedge cell that is surrounded from all direction and replace it with '0'
   ///num--;
   ///call the function
-  ///[fillFun]
-  ///create an empty Set
+  ///[applyRule]
+  ///create an empty Set [set1]
   ///scan the matrix
   ///when hitting '1' look in eight directions and store the coordinates of any '0' cell and add it to the set
-  ///when finish scanning fill all the cells stored in the Set with '1'
-  ///[emptyFun]
-  ///create an empty Set
+
+  ///create an empty Set [set2]
   ///scan the matrix
   ///when hitting '0' check all eight directions if all '1' store the coordinates inside the Set
-  ///when finishing scanning the matrix replace all cells inside the cell with 0
+  ///when finishing scanning the matrix replace all cells in set1  with 0 and all cells in set2 with 1
 
   if (num == 0) {
     return mat;
   }
 
-  //call fill function
-  fillFun(mat);
-
-  //call empty function
+  //call applyRules
+  applyRules(mat);
 
   num--;
   return fun(num, mat);
 }
 
-function fillFun(mat) {
-  const set = new Set();
+function applyRules(mat) {
+  const set1 = new Set();
   for (let row in mat) {
     for (let col in mat[row]) {
       if (mat[row][col] == 1) {
         if (mat[row - 1]) {
           if (mat[row - 1][col - 1] && mat[row - 1][col - 1] == 0) {
-            set.add([row - 1, col - 1]);
+            set1.add([row - 1, col - 1]);
           }
 
           if (mat[row - 1][col] && mat[row - 1][col] == 0) {
-            set.add([row - 1, col]);
+            set1.add([row - 1, col]);
           }
           if (mat[row - 1][col + 1] && mat[row - 1][col + 1] == 0) {
-            set.add([row - 1, col + 1]);
+            set1.add([row - 1, col + 1]);
           }
         }
 
         if (mat[row][col - 1] && mat[row][col - 1] == 0) {
-          set.add([row, col - 1]);
+          set1.add([row, col - 1]);
         }
 
         if (mat[row][col + 1] && mat[row][col + 1] == 0) {
-          set.add([row, col + 1]);
+          set1.add([row, col + 1]);
         }
 
         if (mat[row + 1]) {
           if (mat[row + 1][col - 1] && mat[row + 1][col - 1] == 0) {
-            set.add([row + 1, col - 1]);
+            set1.add([row + 1, col - 1]);
           }
 
           if (mat[row + 1][col] && mat[row + 1][col] == 0) {
-            set.add([row + 1, col]);
+            set1.add([row + 1, col]);
           }
           if (mat[row + 1][col + 1] && mat[row + 1][col + 1] == 0) {
-            set.add([row + 1, col + 1]);
+            set1.add([row + 1, col + 1]);
           }
         }
       }
     }
   }
 
-  for (let el of Set) {
-    mat[el[0]][el[1]] = "1";
-  }
-  return mat;
-}
-
-function emptyFun(mat) {
-  const set = new Set();
+  const set2 = new Set();
   for (let row in mat) {
     for (let col in mat[row]) {
       if (mat[row][col] == 0) {
@@ -132,13 +122,17 @@ function emptyFun(mat) {
           }
         }
         if (surrounded) {
-          set.add([row, col]);
+          set2.add([row, col]);
         }
       }
     }
   }
 
-  for (let el of Set) {
+  for (let el of set1) {
+    mat[el[0]][el[1]] = "1";
+  }
+
+  for (let el of set2) {
     mat[el[0]][el[1]] = "0";
   }
   return mat;
