@@ -35,6 +35,7 @@ function fun(num, mat) {
   }
 
   //call applyRules
+
   applyRules(mat);
 
   num--;
@@ -46,37 +47,62 @@ function applyRules(mat) {
   for (let row in mat) {
     for (let col in mat[row]) {
       if (mat[row][col] == 1) {
-        if (mat[row - 1]) {
-          if (mat[row - 1][col - 1] && mat[row - 1][col - 1] == 0) {
-            set1.add([row - 1, col - 1]);
+        console.log("found");
+        if (mat[row * 1 - 1] != undefined) {
+          if (
+            mat[row * 1 - 1][col * 1 - 1] != undefined &&
+            mat[row * 1 - 1][col * 1 - 1] == 0
+          ) {
+            set1.add([row * 1 - 1, col * 1 - 1]);
           }
 
-          if (mat[row - 1][col] && mat[row - 1][col] == 0) {
-            set1.add([row - 1, col]);
+          if (
+            mat[row * 1 - 1][col * 1] != undefined &&
+            mat[row * 1 - 1][col * 1] == 0
+          ) {
+            set1.add([row * 1 - 1, col * 1]);
           }
-          if (mat[row - 1][col + 1] && mat[row - 1][col + 1] == 0) {
-            set1.add([row - 1, col + 1]);
+          if (
+            mat[row * 1 - 1][col * 1 + 1] != undefined &&
+            mat[row * 1 - 1][col * 1 + 1] == 0
+          ) {
+            set1.add([row * 1 - 1, col * 1 + 1]);
           }
         }
 
-        if (mat[row][col - 1] && mat[row][col - 1] == 0) {
-          set1.add([row, col - 1]);
+        if (
+          mat[row * 1][col * 1 - 1] != undefined &&
+          mat[row * 1][col * 1 - 1] == 0
+        ) {
+          set1.add([row * 1, col * 1 - 1]);
         }
 
-        if (mat[row][col + 1] && mat[row][col + 1] == 0) {
-          set1.add([row, col + 1]);
+        if (
+          mat[row][col * 1 + 1] != undefined &&
+          mat[row * 1][col * 1 + 1] == 0
+        ) {
+          set1.add([row * 1, col * 1 + 1]);
         }
 
-        if (mat[row + 1]) {
-          if (mat[row + 1][col - 1] && mat[row + 1][col - 1] == 0) {
-            set1.add([row + 1, col - 1]);
+        if (mat[row * 1 + 1] != undefined) {
+          if (
+            mat[row * 1 + 1][col * 1 - 1] != undefined &&
+            mat[row * 1 + 1][col * 1 - 1] == 0
+          ) {
+            set1.add([row * 1 + 1, col * 1 - 1]);
           }
 
-          if (mat[row + 1][col] && mat[row + 1][col] == 0) {
-            set1.add([row + 1, col]);
+          if (
+            mat[row * 1 + 1][col * 1] != undefined &&
+            mat[row * 1 + 1][col * 1] == 0
+          ) {
+            set1.add([row * 1 + 1, col * 1]);
           }
-          if (mat[row + 1][col + 1] && mat[row + 1][col + 1] == 0) {
-            set1.add([row + 1, col + 1]);
+          if (
+            mat[row * 1 + 1][col * 1 + 1] != undefined &&
+            mat[row * 1 + 1][col * 1 + 1] == 0
+          ) {
+            set1.add([row * 1 + 1, col * 1 + 1]);
           }
         }
       }
@@ -85,55 +111,79 @@ function applyRules(mat) {
 
   const set2 = new Set();
   for (let row in mat) {
-    for (let col in mat[row]) {
-      if (mat[row][col] == 0) {
+    for (let col in mat[row * 1]) {
+      if (mat[row * 1][col * 1] == 0) {
         let surrounded = true;
-        if (mat[row - 1]) {
-          if (mat[row - 1][col - 1] && mat[row - 1][col - 1] == 0) {
+        if (mat[row * 1 - 1] != undefined) {
+          if (
+            mat[row * 1 - 1][col * 1 - 1] != undefined &&
+            mat[row * 1 - 1][col * 1 - 1] == 0
+          ) {
             surrounded = false;
           }
 
-          if (mat[row - 1][col] && mat[row - 1][col] == 0) {
+          if (
+            mat[row * 1 - 1][col * 1] != undefined &&
+            mat[row * 1 - 1][col * 1] == 0
+          ) {
             surrounded = false;
           }
-          if (mat[row - 1][col + 1] && mat[row - 1][col + 1] == 0) {
+          if (
+            mat[row * 1 - 1][col * 1 + 1] != undefined &&
+            mat[row * 1 - 1][col * 1 + 1] == 0
+          ) {
             surrounded = false;
           }
         }
 
-        if (mat[row][col - 1] && mat[row][col - 1] == 0) {
+        if (
+          mat[row * 1][col * 1 - 1] != undefined &&
+          mat[row * 1][col * 1 - 1] == 0
+        ) {
           surrounded = false;
         }
 
-        if (mat[row][col + 1] && mat[row][col + 1] == 0) {
+        if (
+          mat[row * 1][col * 1 + 1] != undefined &&
+          mat[row * 1][col * 1 + 1] == 0
+        ) {
           surrounded = false;
         }
 
-        if (mat[row + 1]) {
-          if (mat[row + 1][col - 1] && mat[row + 1][col - 1] == 0) {
+        if (mat[row * 1 + 1]) {
+          if (
+            mat[row * 1 + 1][col * 1 - 1] != undefined &&
+            mat[row * 1 + 1][col * 1 - 1] == 0
+          ) {
             surrounded = false;
           }
 
-          if (mat[row + 1][col] && mat[row + 1][col] == 0) {
+          if (
+            mat[row * 1 + 1][col * 1] != undefined &&
+            mat[row * 1 + 1][col * 1] == 0
+          ) {
             surrounded = false;
           }
-          if (mat[row + 1][col + 1] && mat[row + 1][col + 1] == 0) {
+          if (
+            mat[row * 1 + 1][col * 1 + 1] != undefined &&
+            mat[row * 1 + 1][col * 1 + 1] == 0
+          ) {
             surrounded = false;
           }
         }
         if (surrounded) {
-          set2.add([row, col]);
+          set2.add([row * 1, col * 1]);
         }
       }
     }
   }
-
+  console.log(set2);
   for (let el of set1) {
-    mat[el[0]][el[1]] = "1";
+    mat[el[0]][el[1]] = 1;
   }
 
   for (let el of set2) {
-    mat[el[0]][el[1]] = "0";
+    mat[el[0]][el[1]] = 0;
   }
   return mat;
 }
