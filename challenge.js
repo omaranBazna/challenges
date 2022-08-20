@@ -25,6 +25,11 @@ function fun(num, mat) {
   ///scan the matrix
   ///when hitting '1' look in eight directions and store the coordinates of any '0' cell and add it to the set
   ///when finish scanning fill all the cells stored in the Set with '1'
+  ///[emptyFun]
+  ///create an empty Set
+  ///scan the matrix
+  ///when hitting '0' check all eight directions if all '1' store the coordinates inside the Set
+  ///when finishing scanning the matrix replace all cells inside the cell with 0
 }
 
 test1Mat1 = [
