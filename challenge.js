@@ -36,8 +36,8 @@ function fun(num, mat) {
 
   //call applyRules
 
-  applyRules(mat);
-
+  mat = applyRules(mat);
+  console.log(mat);
   num--;
   return fun(num, mat);
 }
@@ -47,7 +47,6 @@ function applyRules(mat) {
   for (let row in mat) {
     for (let col in mat[row]) {
       if (mat[row][col] == 1) {
-        console.log("found");
         if (mat[row * 1 - 1] != undefined) {
           if (
             mat[row * 1 - 1][col * 1 - 1] != undefined &&
@@ -209,8 +208,14 @@ const test2 = [
   [1, 1, 0, 0],
   [1, 0, 0, 1],
 ];
+
 const years2 = 2;
 
+const test3 = [
+  [1, 1, 1, 0],
+  [1, 1, 1, 1],
+  [1, 1, 1, 1],
+];
 /*
 the final matrix will be:
 [[1, 1, 1, 1],
@@ -219,4 +224,4 @@ the final matrix will be:
 
  */
 
-console.log(fun(years1, test1));
+console.log(fun(1, test3));
