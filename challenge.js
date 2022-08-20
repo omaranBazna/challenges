@@ -37,7 +37,7 @@ function fun(num, mat) {
   //call applyRules
 
   mat = applyRules(mat);
-  console.log(mat);
+
   num--;
   return fun(num, mat);
 }
@@ -111,72 +111,76 @@ function applyRules(mat) {
   const set2 = new Set();
   for (let row in mat) {
     for (let col in mat[row * 1]) {
-      if (mat[row * 1][col * 1] == 0) {
+      if (mat[row * 1][col * 1] == 1) {
         let surrounded = true;
-        if (mat[row * 1 - 1] != undefined) {
+        if (mat[row * 1 - 1] == undefined) {
+          surrounded = false;
+        } else {
           if (
-            mat[row * 1 - 1][col * 1 - 1] != undefined &&
+            mat[row * 1 - 1][col * 1 - 1] == undefined ||
             mat[row * 1 - 1][col * 1 - 1] == 0
           ) {
             surrounded = false;
           }
 
           if (
-            mat[row * 1 - 1][col * 1] != undefined &&
+            mat[row * 1 - 1][col * 1] == undefined ||
             mat[row * 1 - 1][col * 1] == 0
           ) {
             surrounded = false;
           }
           if (
-            mat[row * 1 - 1][col * 1 + 1] != undefined &&
+            mat[row * 1 - 1][col * 1 + 1] == undefined ||
             mat[row * 1 - 1][col * 1 + 1] == 0
           ) {
             surrounded = false;
           }
         }
-
         if (
-          mat[row * 1][col * 1 - 1] != undefined &&
+          mat[row * 1][col * 1 - 1] == undefined ||
           mat[row * 1][col * 1 - 1] == 0
         ) {
           surrounded = false;
         }
 
         if (
-          mat[row * 1][col * 1 + 1] != undefined &&
+          mat[row * 1][col * 1 + 1] == undefined ||
           mat[row * 1][col * 1 + 1] == 0
         ) {
           surrounded = false;
         }
 
-        if (mat[row * 1 + 1]) {
+        if (mat[row * 1 + 1] == undefined) {
+          surrounded = false;
+        } else {
           if (
-            mat[row * 1 + 1][col * 1 - 1] != undefined &&
+            mat[row * 1 + 1][col * 1 - 1] == undefined ||
             mat[row * 1 + 1][col * 1 - 1] == 0
           ) {
             surrounded = false;
           }
 
           if (
-            mat[row * 1 + 1][col * 1] != undefined &&
+            mat[row * 1 + 1][col * 1] == undefined ||
             mat[row * 1 + 1][col * 1] == 0
           ) {
             surrounded = false;
           }
           if (
-            mat[row * 1 + 1][col * 1 + 1] != undefined &&
+            mat[row * 1 + 1][col * 1 + 1] == undefined ||
             mat[row * 1 + 1][col * 1 + 1] == 0
           ) {
             surrounded = false;
           }
         }
+
         if (surrounded) {
           set2.add([row * 1, col * 1]);
         }
       }
     }
   }
-  console.log(set2);
+
   for (let el of set1) {
     mat[el[0]][el[1]] = 1;
   }
@@ -184,6 +188,7 @@ function applyRules(mat) {
   for (let el of set2) {
     mat[el[0]][el[1]] = 0;
   }
+
   return mat;
 }
 
@@ -211,11 +216,6 @@ const test2 = [
 
 const years2 = 2;
 
-const test3 = [
-  [1, 1, 1, 0],
-  [1, 1, 1, 1],
-  [1, 1, 1, 1],
-];
 /*
 the final matrix will be:
 [[1, 1, 1, 1],
@@ -223,5 +223,5 @@ the final matrix will be:
  [1, 1, 1, 1]]
 
  */
-
-console.log(fun(1, test3));
+console.log(fun(years1, test1));
+console.log(fun(years2, test2));
