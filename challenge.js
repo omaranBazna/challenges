@@ -30,6 +30,16 @@ function fun(num, mat) {
   ///scan the matrix
   ///when hitting '0' check all eight directions if all '1' store the coordinates inside the Set
   ///when finishing scanning the matrix replace all cells inside the cell with 0
+
+  if (num == 0) {
+    return mat;
+  }
+
+  //call fill function
+  //call empty function
+
+  num--;
+  return fun(num, mat);
 }
 
 test1Mat1 = [
