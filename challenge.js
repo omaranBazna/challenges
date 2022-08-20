@@ -42,6 +42,54 @@ function fun(num, mat) {
   return fun(num, mat);
 }
 
+function fillFun(mat) {
+  const set = new Set();
+  for (let row in mat) {
+    for (let col in mat[row]) {
+      if (mat[row][col] == 1) {
+        if (mat[row - 1]) {
+          if (mat[row - 1][col - 1] && mat[row - 1][col - 1] == 0) {
+            set.add([row - 1][col - 1]);
+          }
+
+          if (mat[row - 1][col] && mat[row - 1][col] == 0) {
+            set.add([row - 1][col]);
+          }
+          if (mat[row - 1][col + 1] && mat[row - 1][col + 1] == 0) {
+            set.add([row - 1][col + 1]);
+          }
+        }
+
+        if (mat[row][col - 1] && mat[row][col - 1] == 0) {
+          set.add([row][col - 1]);
+        }
+
+        if (mat[row][col + 1] && mat[row][col + 1] == 0) {
+          set.add([row][col + 1]);
+        }
+
+        if (mat[row + 1]) {
+          if (mat[row + 1][col - 1] && mat[row + 1][col - 1] == 0) {
+            set.add([row + 1][col - 1]);
+          }
+
+          if (mat[row + 1][col] && mat[row + 1][col] == 0) {
+            set.add([row + 1][col]);
+          }
+          if (mat[row + 1][col + 1] && mat[row + 1][col + 1] == 0) {
+            set.add([row + 1][col + 1]);
+          }
+        }
+      }
+    }
+  }
+
+  for (let el of Set) {
+    mat[el[0]][el[1]] = "1";
+  }
+  return mat;
+}
+
 test1Mat1 = [
   [0, 0, 1],
   [0, 0, 0],
