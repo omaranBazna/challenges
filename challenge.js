@@ -168,3 +168,5 @@ the final matrix will be:
  [1, 1, 1, 1]]
 
  */
+
+console.log(fun(years1, test1));
