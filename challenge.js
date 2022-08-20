@@ -16,6 +16,8 @@ function fun(num, mat) {
   //if num==0 return the mat  [base case]
   ///else
   /// apply the rules
+  ///create function to search for empty cells which is adjacent to a hedge and replace it with '1' call it [fillFun] function
+  ///create function to search for a hedge cell that is surrounded from all direction and replace it with '0'  call it [emptyFun]
   ///num--;
   ///call the function
 }
