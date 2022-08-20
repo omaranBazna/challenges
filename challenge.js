@@ -11,7 +11,14 @@ Any other squares will be left intact.
 
 */
 
-function fun(num, mat) {}
+function fun(num, mat) {
+  ///we can implement it using recursive approach
+  //if num==0 return the mat  [base case]
+  ///else
+  /// apply the rules
+  ///num--;
+  ///call the function
+}
 
 test1Mat1 = [
   [0, 0, 1],
